@@ -1,13 +1,13 @@
 import './App.css';
-import CustomTest1 from './components/CustomTest1';
-import CustomTest2 from './components/CustomTest2';
+import CountTest1 from './components/CountTest1';
+import InputsTest2 from './components/InputsTest2';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <CustomTest1 />
-        <CustomTest2 />
+        <CountTest1 />
+        <InputsTest2 />
       </header>
     </div>
   );
