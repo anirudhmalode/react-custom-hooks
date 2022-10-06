@@ -1,16 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
-import ButtonGroup from "@mui/material/ButtonGroup";
-import useDocumentTitle from "../customHooks/useDocumentTitle";
+import { TextField } from "@mui/material";
+import useInput from "../customHooks/useInput";
 
 const InputsTest2 = () => {
-  const [count, setCount] = useState(0);
-  useDocumentTitle(count);
+  const [firstName, bindFirstName, resetFirstName] = useInput("");
+  const [lastName, bindLastName, resetLastName] = useInput("");
+
+  const submitName = (e) => {
+    e.preventDefault(); // If used materil ui automatically handled.
+    console.log("NAME -->", firstName, " ", lastName);
+    resetFirstName();
+    resetLastName();
+  };
 
   return (
     <div>
-      {count}
       <Box
         sx={{
           display: "flex",
@@ -21,14 +27,11 @@ const InputsTest2 = () => {
           },
         }}
       >
-        <ButtonGroup size="small" aria-label="small button group">
-          <Button key="increment" onClick={() => setCount(count + 1)}>
-            Increment
-          </Button>
-          <Button key="decrement" onClick={() => setCount(count - 1)}>
-            Decrement
-          </Button>
-        </ButtonGroup>
+        <TextField {...bindFirstName} size="small" placeholder="First Name" />
+        <TextField {...bindLastName} size="small" placeholder="Last Name" />
+        <Button key="submit" size="small" variant="outlined" onClick={submitName}>
+          Submit
+        </Button>
       </Box>
     </div>
   );
